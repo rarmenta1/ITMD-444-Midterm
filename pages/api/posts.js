@@ -11,13 +11,15 @@ export default async function handler(req, res) {
     res.status(200).json(posts)
   } else if (req.method === 'POST') {
     // Create a new post
-    const { title, content, authorId } = req.body
+    const { title, content, authorId } = req.body;
+    if (!authorId) {
+      return res.status(400).json({ error: 'Author id is missing in the request body' })
+    }
     try {
       const newPost = await prisma.post.create({
         data: {
           title,
           content,
-          // Ensure authorId is converted to number
           User: { connect: { id: Number(authorId) } }, // Connects the post to the user
         },
       })
@@ -28,7 +30,10 @@ export default async function handler(req, res) {
     }
   } else if (req.method === 'PUT') {
     // Update an existing post
-    const { id, title, content } = req.body
+    const { id, title, content, authorId } = req.body
+    if (!authorId) {
+      return res.status(400).json({ error: 'Author id is missing in the request body' })
+    }
     try {
       const updatedPost = await prisma.post.update({
         where: { id: Number(id) },
