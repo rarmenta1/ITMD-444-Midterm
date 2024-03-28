@@ -1,7 +1,8 @@
 // pages/users.js
 
 import React, { useState, useEffect } from 'react';
-import UserForm from '../components/userForm';
+import Link from 'next/link';
+import UserForm from '../components/UserForm';
 import UserList from '../components/UserList';
 
 const UsersPage = () => {
@@ -68,6 +69,12 @@ const UsersPage = () => {
       <h1>Users</h1>
       <UserForm onSubmit={handleFormSubmit} initialData={selectedUser} />
       <UserList users={users} onEdit={handleEdit} />
+      <Link href="/posts">
+        <button>Posts Page</button>
+      </Link>
+      <Link href="/comments">
+        <button>Comments Page</button>
+      </Link>
     </div>
   );
 };

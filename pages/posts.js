@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import PostForm from '../components/PostForm';
 import PostList from '../components/PostList';
 
@@ -98,6 +99,12 @@ const PostsPage = () => {
         onDelete={handleDeletePost}
         onEdit={handleEditPost}
       />
+      <Link href="/users">
+        <button>Users Page</button>
+      </Link>
+      <Link href="/comments">
+        <button>Comments Page</button>
+      </Link>
     </div>
   );
 };

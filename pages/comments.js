@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { PrismaClient } from '@prisma/client';
+import Link from 'next/link';
 import CommentForm from '../components/CommentForm';
 import CommentList from '../components/CommentList';
 
@@ -97,6 +98,12 @@ const CommentsPage = () => {
         onDelete={handleDeleteComment}
         onEdit={handleEditComment}
       />
+      <Link href="/users">
+        <button>Users Page</button>
+      </Link>
+      <Link href="/posts">
+        <button>Posts Page</button>
+      </Link>
     </div>
   );
 };
